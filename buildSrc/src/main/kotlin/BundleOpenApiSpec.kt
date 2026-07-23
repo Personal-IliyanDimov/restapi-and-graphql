@@ -10,8 +10,9 @@ import org.gradle.api.tasks.TaskAction
 import java.io.File
 
 /**
- * Bundles the multi-file OpenAPI spec (openapi.yaml + schemas/*.yaml fragments) into a single
- * JSON document where every reference to a shared fragment - whether declared as a top-level
+ * Bundles the multi-file OpenAPI spec (openapi.yaml + the schemas directory's fragment files)
+ * into a single JSON document where every reference to a shared fragment - whether declared as
+ * a top-level
  * named component (components/schemas/<Name>) or reached indirectly through another fragment
  * (e.g. ProductPage.yaml's `content.items`) - is canonicalized to the exact same
  * "#/components/schemas/<Name>" pointer.
