@@ -1,0 +1,42 @@
+meta {
+  name: List Products
+  type: graphql
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/graphql
+  body: graphql
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:graphql {
+  query ListProducts($page: Int, $size: Int) {
+    products(page: $page, size: $size) {
+      totalElements
+      totalPages
+      page
+      size
+      content {
+        id
+        name
+        price
+      }
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "page": 0,
+    "size": 20
+  }
+}
+
+assert {
+  res.status: eq 200
+}

@@ -1,0 +1,24 @@
+# Standalone JSON Schema fragment for the REST error body (RFC 7807-flavored, simplified).
+# Used by openapi.yaml for all non-2xx responses.
+type: object
+title: ErrorResponse
+description: Standard error payload returned by the REST API.
+required:
+  - status
+  - error
+  - message
+  - path
+  - timestamp
+properties:
+  timestamp:
+    type: string
+    format: date-time
+  status:
+    type: integer
+    format: int32
+  error:
+    type: string
+  message:
+    type: string
+  path:
+    type: string

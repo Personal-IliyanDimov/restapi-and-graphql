@@ -1,0 +1,49 @@
+meta {
+  name: Create Product
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/graphql
+  body: graphql
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:graphql {
+  mutation CreateProduct($input: ProductInput!) {
+    createProduct(input: $input) {
+      id
+      name
+      price
+      quantity
+      category
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "input": {
+      "name": "Mechanical Keyboard",
+      "description": "Hot-swappable mechanical keyboard",
+      "price": 89.5,
+      "quantity": 40,
+      "category": "Accessories"
+    }
+  }
+}
+
+script:post-response {
+  if (res.body && res.body.data && res.body.data.createProduct) {
+    bru.setVar("productId", res.body.data.createProduct.id);
+  }
+}
+
+assert {
+  res.status: eq 200
+}

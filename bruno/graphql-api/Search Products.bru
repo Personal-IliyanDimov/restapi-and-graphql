@@ -1,0 +1,42 @@
+meta {
+  name: Search Products
+  type: graphql
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/graphql
+  body: graphql
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:graphql {
+  query SearchProducts($name: String, $category: String, $minPrice: Float, $maxPrice: Float) {
+    searchProducts(name: $name, category: $category, minPrice: $minPrice, maxPrice: $maxPrice) {
+      totalElements
+      content {
+        id
+        name
+        price
+        category
+      }
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "name": "keyboard",
+    "category": "Accessories",
+    "minPrice": 10,
+    "maxPrice": 200
+  }
+}
+
+assert {
+  res.status: eq 200
+}

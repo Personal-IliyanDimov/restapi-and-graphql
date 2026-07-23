@@ -1,0 +1,77 @@
+"""
+GraphQL contract for the product catalog - deliberately mirrors the schema-openapi module's
+openapi/openapi.yaml operation-for-operation (see that file's paths):
+  listProducts    -> products
+  createProduct   -> createProduct
+  searchProducts  -> searchProducts
+  getProductById  -> product
+  updateProduct   -> updateProduct
+  deleteProduct   -> deleteProduct
+
+`Product`, `ProductInput` and `ProductPage` below are NOT independently generated types.
+schema-graphql/build.gradle.kts configures the DGS codegen plugin's `typeMapping` to bind each
+of these GraphQL types directly to the Java class OpenAPI Generator already produced (in the
+schema-openapi module) from the matching fragment in openapi/schemas/*.yaml. Codegen will fail
+the build (by design) if a mapped type cannot be resolved on the compile classpath, rather than
+silently generating a second, divergent type - so keep the field lists here in sync with the
+schema fragments.
+"""
+
+type Query {
+    "Fetch a single product by id. Returns null if it does not exist."
+    product(id: ID!): Product
+
+    "List products, most-recently-created first."
+    products(page: Int = 0, size: Int = 20): ProductPage!
+
+    "The one search endpoint - same filters as GET /api/products/search."
+    searchProducts(
+        name: String
+        category: String
+        minPrice: Float
+        maxPrice: Float
+        page: Int = 0
+        size: Int = 20
+    ): ProductPage!
+}
+
+type Mutation {
+    "Equivalent to POST /api/products."
+    createProduct(input: ProductInput!): Product!
+
+    "Equivalent to PUT /api/products/{productId}."
+    updateProduct(id: ID!, input: ProductInput!): Product!
+
+    "Equivalent to DELETE /api/products/{productId}. Returns true if a product was deleted."
+    deleteProduct(id: ID!): Boolean!
+}
+
+"Mirrors openapi/schemas/Product.yaml field-for-field. Type-mapped to the generated Product.java."
+type Product {
+    id: ID!
+    name: String!
+    description: String
+    price: Float!
+    quantity: Int!
+    category: String
+    createdAt: String
+    updatedAt: String
+}
+
+"Mirrors openapi/schemas/ProductInput.yaml field-for-field. Type-mapped to the generated ProductInput.java."
+input ProductInput {
+    name: String!
+    description: String
+    price: Float!
+    quantity: Int!
+    category: String
+}
+
+"Mirrors openapi/schemas/ProductPage.yaml field-for-field. Type-mapped to the generated ProductPage.java."
+type ProductPage {
+    content: [Product!]!
+    page: Int!
+    size: Int!
+    totalElements: Int!
+    totalPages: Int!
+}

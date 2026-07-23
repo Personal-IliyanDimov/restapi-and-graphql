@@ -1,0 +1,38 @@
+meta {
+  name: Get Product
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/graphql
+  body: graphql
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:graphql {
+  query GetProduct($id: ID!) {
+    product(id: $id) {
+      id
+      name
+      description
+      price
+      quantity
+      category
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "id": "{{productId}}"
+  }
+}
+
+assert {
+  res.status: eq 200
+}

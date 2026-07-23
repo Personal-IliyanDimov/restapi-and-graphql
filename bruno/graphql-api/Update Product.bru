@@ -1,0 +1,42 @@
+meta {
+  name: Update Product
+  type: graphql
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/graphql
+  body: graphql
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:graphql {
+  mutation UpdateProduct($id: ID!, $input: ProductInput!) {
+    updateProduct(id: $id, input: $input) {
+      id
+      name
+      price
+      quantity
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "id": "{{productId}}",
+    "input": {
+      "name": "Mechanical Keyboard v2",
+      "price": 99.0,
+      "quantity": 35,
+      "category": "Accessories"
+    }
+  }
+}
+
+assert {
+  res.status: eq 200
+}

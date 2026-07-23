@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: product-catalog-service
+  graphql:
+    graphiql:
+      enabled: true
+    path: /graphql
+    # Default schema location (classpath:graphql/**/) already resolves the schema module's
+    # graphql/schema.graphqls, since that module is a compile dependency of this one.
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

@@ -1,0 +1,22 @@
+meta {
+  name: Search Products
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/api/products/search?name=mouse&category=Accessories&minPrice=10&maxPrice=100
+  body: none
+  auth: none
+}
+
+params:query {
+  name: mouse
+  category: Accessories
+  minPrice: 10
+  maxPrice: 100
+}
+
+assert {
+  res.status: eq 200
+}

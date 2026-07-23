@@ -1,0 +1,134 @@
+Initialized native services in: C:\Users\idim\.gradle\native
+Initialized jansi services in: C:\Users\idim\.gradle\native
+The client will now receive all logging from the daemon (pid: 37676). The daemon log file: C:\Users\idim\.gradle\daemon\9.6.1\daemon-37676.out.log
+Starting 56th build in daemon [uptime: 5 hrs 29 mins 32.415 secs, performance: 100%, GC rate: 0.00/s, heap usage: 1% of 2 GiB]
+Using 24 worker leases.
+Operational build model parameters: {cachingModelBuilding=false, configurationCache=false, configurationCacheDisabledReason=null, configurationCacheParallelLoad=false, configurationCacheParallelStore=false, configureOnDemand=false, invalidateCoupledProjects=false, isolatedProjects=false, isolatedProjectsDiagnostics=false, modelAsProjectDependency=false, modelBuilding=false, parallelModelBuilding=false, parallelProjectConfiguration=false, parallelProjectExecution=true, resilientModelBuilding=false, vintage=true}
+Now considering [C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file 'C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\settings.gradle.kts'.
+Using local directory build cache for the root build (location = C:\Users\idim\.gradle\caches\build-cache-1, remove unused entries = after 7 days).
+Projects loaded. Root project using build file 'C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\build.gradle.kts'.
+Included projects: [root project 'restapi-and-graphql', project ':schema', project ':service']
+
+> Configure project :
+Evaluating root project 'restapi-and-graphql' using build file 'C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\build.gradle.kts'.
+Resolved plugin [id: 'org.gradle.java']
+
+> Configure project :schema
+Evaluating project ':schema' using build file 'C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\schema\build.gradle.kts'.
+Resolved plugin [id: 'org.gradle.java-library']
+Resolved plugin [id: 'io.spring.dependency-management', version: '1.1.7']
+Resolved plugin [id: 'org.openapi.generator', version: '7.14.0']
+Resolved plugin [id: 'com.netflix.dgs.codegen', version: '8.6.0']
+Applying dependency management to configuration 'annotationProcessor' in project 'schema'
+Applying dependency management to configuration 'api' in project 'schema'
+Applying dependency management to configuration 'apiElements' in project 'schema'
+Applying dependency management to configuration 'archives' in project 'schema'
+Applying dependency management to configuration 'compileClasspath' in project 'schema'
+Applying dependency management to configuration 'compileOnly' in project 'schema'
+Applying dependency management to configuration 'compileOnlyApi' in project 'schema'
+Applying dependency management to configuration 'default' in project 'schema'
+Applying dependency management to configuration 'implementation' in project 'schema'
+Applying dependency management to configuration 'mainSourceElements' in project 'schema'
+Applying dependency management to configuration 'runtimeClasspath' in project 'schema'
+Applying dependency management to configuration 'runtimeElements' in project 'schema'
+Applying dependency management to configuration 'runtimeOnly' in project 'schema'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'schema'
+Applying dependency management to configuration 'testCompileClasspath' in project 'schema'
+Applying dependency management to configuration 'testCompileOnly' in project 'schema'
+Applying dependency management to configuration 'testImplementation' in project 'schema'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'schema'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'schema'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'schema'
+Applying dependency management to configuration 'dgsCodegen' in project 'schema'
+DGS CodeGen added ignored dependency [com.netflix.graphql.dgs.codegen:graphql-dgs-codegen-shared-core].
+Applying CodegenPlugin Client Utils conventions.
+DGS CodeGen added dependency [com.netflix.graphql.dgs.codegen:graphql-dgs-codegen-shared-core:8.6.0] to implementation.
+
+> Configure project :service
+Evaluating project ':service' using build file 'C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\service\build.gradle.kts'.
+Resolved plugin [id: 'org.gradle.java']
+Resolved plugin [id: 'org.springframework.boot', version: '4.1.0']
+Resolved plugin [id: 'io.spring.dependency-management', version: '1.1.7']
+Applying dependency management to configuration 'annotationProcessor' in project 'service'
+Applying dependency management to configuration 'apiElements' in project 'service'
+Applying dependency management to configuration 'archives' in project 'service'
+Applying dependency management to configuration 'bootArchives' in project 'service'
+Applying dependency management to configuration 'compileClasspath' in project 'service'
+Applying dependency management to configuration 'compileOnly' in project 'service'
+Applying dependency management to configuration 'default' in project 'service'
+Applying dependency management to configuration 'developmentOnly' in project 'service'
+Applying dependency management to configuration 'implementation' in project 'service'
+Applying dependency management to configuration 'mainSourceElements' in project 'service'
+Applying dependency management to configuration 'productionRuntimeClasspath' in project 'service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'service'
+Applying dependency management to configuration 'runtimeElements' in project 'service'
+Applying dependency management to configuration 'runtimeOnly' in project 'service'
+Applying dependency management to configuration 'testAndDevelopmentOnly' in project 'service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'service'
+Applying dependency management to configuration 'testCompileOnly' in project 'service'
+Applying dependency management to configuration 'testImplementation' in project 'service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'service'
+All projects evaluated.
+Task path ':schema:openApiGenerate' matched project ':schema'
+Task name matched 'openApiGenerate'
+Selected primary task 'openApiGenerate' from project :schema
+Tasks to be executed: [task ':schema:openApiGenerate']
+Tasks that were excluded: []
+Resolve mutations for :schema:openApiGenerate (Thread[#2978,Execution worker,5,main]) started.
+:schema:openApiGenerate (Thread[#2978,Execution worker,5,main]) started.
+
+> Task :schema:openApiGenerate
+Build cache key for task ':schema:openApiGenerate' is 5619396e4034be8379d1047b31e2248e
+Task ':schema:openApiGenerate' is not up-to-date because:
+  Task.upToDateWhen is false.
+OpenAPI 3.1 support is still in beta. To report an issue related to 3.1 spec, please kindly open an issue in the Github repo: https://github.com/openAPITools/openapi-generator.
+Generating with dryRun=false
+No .openapi-generator-ignore file found.
+OpenAPI Generator: spring (server)
+Generator 'spring' is considered stable.
+----------------------------------
+Set base package to invoker package (com.zuhlke.catalog.schema.invoker)
+Environment variable JAVA_POST_PROCESS_FILE not defined so the Java code may not be properly formatted. To define it, try 'export JAVA_POST_PROCESS_FILE="/usr/local/bin/clang-format -i"' (Linux/Mac)
+NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).
+Inline schema created as listProducts_200_response_content_inner. To have complete control of the model name, set the `title` field or use the modelNameMapping option (e.g. --model-name-mappings listProducts_200_response_content_inner=NewModel,ModelA=NewModelA in CLI) or inlineSchemaNameMapping option (--inline-schema-name-mappings listProducts_200_response_content_inner=NewModel,ModelA=NewModelA in CLI).
+Inline schema created as listProducts_200_response. To have complete control of the model name, set the `title` field or use the modelNameMapping option (e.g. --model-name-mappings listProducts_200_response=NewModel,ModelA=NewModelA in CLI) or inlineSchemaNameMapping option (--inline-schema-name-mappings listProducts_200_response=NewModel,ModelA=NewModelA in CLI).
+Inline schema created as createProduct_request. To have complete control of the model name, set the `title` field or use the modelNameMapping option (e.g. --model-name-mappings createProduct_request=NewModel,ModelA=NewModelA in CLI) or inlineSchemaNameMapping option (--inline-schema-name-mappings createProduct_request=NewModel,ModelA=NewModelA in CLI).
+Inline schema created as inline_object. To have complete control of the model name, set the `title` field or use the modelNameMapping option (e.g. --model-name-mappings inline_object=NewModel,ModelA=NewModelA in CLI) or inlineSchemaNameMapping option (--inline-schema-name-mappings inline_object=NewModel,ModelA=NewModelA in CLI).
+Processing operation listProducts
+Processing operation createProduct
+Processing operation searchProducts
+Processing operation getProductById
+Processing operation updateProduct
+Processing operation deleteProduct
+'host' (OAS 2.0) or 'servers' (OAS 3.0) not defined in the spec. Default to [http://localhost] for server URL [http://localhost/api]
+OpenAPI 3.1 support is still in beta. To report an issue related to 3.1 spec, please kindly open an issue in the Github repo: https://github.com/openAPITools/openapi-generator.
+'host' (OAS 2.0) or 'servers' (OAS 3.0) not defined in the spec. Default to [http://localhost] for server URL [http://localhost/api]
+Skipping generation of models.
+Skipping generation of APIs.
+Skipping generation of Webhooks.
+'host' (OAS 2.0) or 'servers' (OAS 3.0) not defined in the spec. Default to [http://localhost] for server URL [http://localhost/api]
+Skipped C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\schema\build\generated\openapi\pom.xml (Skipped by supportingFiles options supplied by user.)
+Skipped C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\schema\build\generated\openapi\README.md (Skipped by supportingFiles options supplied by user.)
+Skipped C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\schema\build\generated\openapi\src\main\java\com\zuhlke\catalog\schema\api\ApiUtil.java (Skipped by supportingFiles options supplied by user.)
+Skipped C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\schema\build\generated\openapi\.openapi-generator-ignore (Skipped by supportingFiles options supplied by user.)
+writing file C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\schema\build\generated\openapi\.openapi-generator\VERSION
+writing file C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\schema\build\generated\openapi\.openapi-generator\FILES
+############################################################################################
+# Thanks for using OpenAPI Generator.                                                      #
+# We appreciate your support! Please consider donation to help us maintain this project.   #
+# https://opencollective.com/openapi_generator/donate                                      #
+############################################################################################
+Successfully generated code to C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL\schema\build\generated\openapi
+Stored cache entry for task ':schema:openApiGenerate' with cache key 5619396e4034be8379d1047b31e2248e
+
+BUILD SUCCESSFUL in 1s
+1 actionable task: 1 executed
+Watched directory hierarchies: [C:\JobInfo\Solutions\HL\RestApiAndGraphQL\RestApiAndGraphQL]
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.6.1/userguide/configuration_cache_enabling.html

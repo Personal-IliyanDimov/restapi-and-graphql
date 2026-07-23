@@ -1,0 +1,29 @@
+meta {
+  name: Update Product
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/api/products/{{productId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "Wireless Mouse Pro",
+    "description": "Ergonomic wireless mouse, v2",
+    "price": 34.99,
+    "quantity": 80,
+    "category": "Accessories"
+  }
+}
+
+assert {
+  res.status: eq 200
+}

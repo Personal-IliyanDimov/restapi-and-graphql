@@ -1,0 +1,30 @@
+# Standalone JSON Schema fragment shared by REST (create/update request body) and GraphQL
+# (the `ProductInput` input type). Same reuse mechanism as Product.yaml - see that file's header.
+type: object
+title: ProductInput
+description: Payload used to create or update a product. Server-assigned fields (id, timestamps) are excluded.
+required:
+  - name
+  - price
+  - quantity
+properties:
+  name:
+    type: string
+    minLength: 1
+    maxLength: 200
+  description:
+    type: string
+    maxLength: 2000
+    nullable: true
+  price:
+    type: number
+    format: double
+    minimum: 0
+  quantity:
+    type: integer
+    format: int32
+    minimum: 0
+  category:
+    type: string
+    maxLength: 100
+    nullable: true
