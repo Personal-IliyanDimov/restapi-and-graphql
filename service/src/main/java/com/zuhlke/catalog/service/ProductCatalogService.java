@@ -1,7 +1,6 @@
 package com.zuhlke.catalog.service;
 
 import com.zuhlke.catalog.schema.model.Product;
-import com.zuhlke.catalog.schema.model.Product1;
 import com.zuhlke.catalog.schema.model.ProductInput;
 import com.zuhlke.catalog.schema.model.ProductPage;
 import com.zuhlke.catalog.service.domain.ProductNotFoundException;
@@ -70,7 +69,7 @@ public class ProductCatalogService {
         int toIndex = Math.min(fromIndex + safeSize, all.size());
 
         ProductPage result = new ProductPage();
-        result.setContent(all.subList(fromIndex, toIndex).stream().map(ProductCatalogService::toPageItem).toList());
+        result.setContent(all.subList(fromIndex, toIndex).stream().toList());
         result.setPage(safePage);
         result.setSize(safeSize);
         result.setTotalElements((long) all.size());
@@ -85,26 +84,5 @@ public class ProductCatalogService {
         target.setQuantity(input.getQuantity());
         target.setCategory(input.getCategory());
         return target;
-    }
-
-    /**
-     * OpenAPI Generator's OpenAPI 3.1 dereferencer generates {@code Product1} as a
-     * structurally-identical twin of {@link Product} for {@code ProductPage.content}'s
-     * array items, instead of reusing the {@code Product} class - see the comment on
-     * {@code content} in openapi/schemas/ProductPage.yaml for why. This is a plain field
-     * copy to bridge the two, not a second implementation of anything; both classes are
-     * generated from the same schema and always have identical fields.
-     */
-    private static Product1 toPageItem(Product product) {
-        Product1 item = new Product1();
-        item.setId(product.getId());
-        item.setName(product.getName());
-        item.setDescription(product.getDescription());
-        item.setPrice(product.getPrice());
-        item.setQuantity(product.getQuantity());
-        item.setCategory(product.getCategory());
-        item.setCreatedAt(product.getCreatedAt());
-        item.setUpdatedAt(product.getUpdatedAt());
-        return item;
     }
 }

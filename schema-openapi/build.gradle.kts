@@ -25,13 +25,12 @@ val generatedOpenApiDir = layout.buildDirectory.dir("generated/openapi").get().a
 val schemaModelPackage = "com.zuhlke.catalog.schema.model"
 val schemaApiPackage = "com.zuhlke.catalog.schema.api"
 
-// EXPERIMENT: feed openApiGenerate a pre-bundled single-file spec (see BundleOpenApiSpec in
-// buildSrc) instead of the raw multi-file openapi.yaml, to test whether that avoids the
-// Product1 duplicate-class issue (see ProductPage.yaml's `content.items` comment) - same-file
-// "#/components/schemas/X" reuse is much better-tested in the generator than cross-file reuse.
-// If the generated ProductPage.java's `content` field comes out as List<Product> (not
-// List<Object> and not referencing a Product1), this worked and
-// ProductCatalogService.toPageItem() can be deleted; if not, revert to inputSpec.set(openApiSpec...).
+// openApiGenerate is fed a pre-bundled single-file spec (see BundleOpenApiSpec in buildSrc)
+// instead of the raw multi-file openapi.yaml. This fixes the Product1 duplicate-class issue
+// (see ProductPage.yaml's `content.items` comment): same-file "#/components/schemas/X" reuse,
+// which the bundler produces, is what the generator actually handles correctly - cross-file
+// reuse of the same fragment is not. Confirmed: generated ProductPage.java's `content` is
+// List<Product>, no Product1 anywhere.
 val bundledOpenApiSpec = layout.buildDirectory.file("generated/openapi-bundled/openapi.json")
 
 val bundleOpenApiSpec by tasks.registering(BundleOpenApiSpec::class) {

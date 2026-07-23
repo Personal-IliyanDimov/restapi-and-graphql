@@ -13,18 +13,18 @@ properties:
   content:
     type: array
     items:
-      # NOTE: despite this pointing at the exact same fragment as
-      # components/schemas/Product in openapi.yaml, OpenAPI Generator's OpenAPI 3.1
-      # dereferencer does not recognize the two as the same model and generates a
-      # second, structurally-identical class ("Product1") for this usage. Tried
-      # routing this through "#/components/schemas/Product" (fails: a bare "#/..."
-      # only resolves within this file), through an explicit cross-file pointer
-      # (resolves fine, but still duplicates the class), and through pinning
-      # openapi.yaml to 3.0.3 instead of 3.1 (worse: 3.0's resolver doesn't chase this
-      # ref at all and silently types the field as Object) - this is a known-cosmetic
-      # limitation of the tool's beta OpenAPI 3.1 support, not a design flaw here.
-      # ProductCatalogService.toPageItem() bridges the two; it's a plain field copy,
-      # not a second implementation of anything.
+      # NOTE: this points at the exact same fragment as components/schemas/Product in
+      # openapi.yaml. Fed directly to OpenAPI Generator, that reuse isn't recognized -
+      # its OpenAPI 3.1 dereferencer generates a spurious duplicate class ("Product1")
+      # for this usage instead (tried rewriting this ref itself several ways, and
+      # tried pinning openapi.yaml to 3.0.3 - both made things equal or worse; see git
+      # history / prior conversation for the dead ends). What actually fixes it is
+      # upstream of this file: schema-openapi/build.gradle.kts runs BundleOpenApiSpec
+      # (in buildSrc) before generation, which merges the multi-file spec into one
+      # document and rewrites every reference to this fragment - this one included -
+      # to a single literal "#/components/schemas/Product" pointer. That same-file,
+      # same-string reuse is what the generator actually handles correctly, so the
+      # generated ProductPage.content is List<Product>, no Product1 involved.
       $ref: "./Product.yaml"
   page:
     type: integer
